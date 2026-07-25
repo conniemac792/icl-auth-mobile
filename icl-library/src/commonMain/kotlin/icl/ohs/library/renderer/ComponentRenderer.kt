@@ -30,7 +30,7 @@ data class RenderOptions(val modifier: Modifier = Modifier, val onClick: (() -> 
  * Author-facing renderer for a single item of type [T] using config [C].
  *
  * The two type parameters let one renderer class be reused under multiple
- * [dev.ohs.player.library.registry.ViewType] registrations with different configs — e.g. a patient
+ * [icl.ohs.mobile.library.registry.ViewType] registrations with different configs — e.g. a patient
  * card rendered both as a list card and as a detail header with `showLastVisit = false`.
  *
  * ```
@@ -98,7 +98,7 @@ fun interface ConfiguredRenderer<T> {
  *
  * Each invocation produces a fresh [ConfiguredRenderer] instance — they are not cached or
  * value-equal. Callers needing identity (e.g. for tests) should retrieve the original
- * [ComponentRenderer] via [dev.ohs.player.library.registry.componentSource] instead.
+ * [ComponentRenderer] via [icl.ohs.mobile.library.registry.componentSource] instead.
  */
 @PublishedApi
 internal fun <T : Any, C : Any> ComponentRenderer<T, C>.withConfig(

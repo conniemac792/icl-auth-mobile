@@ -138,11 +138,11 @@ val hasReleaseSigning: Boolean =
     !keystoreStorePassword.isNullOrBlank()
 
 android {
-  namespace = "icl.ohs.refernce"
+  namespace = "icl.ohs.reference"
   compileSdk = libs.versions.android.compileSdk.get().toInt()
 
   defaultConfig {
-    applicationId = "icl.ohs.refernce"
+    applicationId = "icl.ohs.reference"
     minSdk = libs.versions.android.minSdk.get().toInt()
     targetSdk = libs.versions.android.targetSdk.get().toInt()
     versionCode = releaseVersionCode
@@ -180,7 +180,7 @@ android {
 
 igCodegen {
   // sourcesDir defaults to src/commonMain/composeResources/files
-  packageName = "dev.ohs.player.generated"
+  packageName = "icl.ohs.mobile.generated"
 }
 
 dependencies { debugImplementation(libs.compose.uiTooling) }
@@ -242,11 +242,11 @@ if (isCi) {
 
 compose.desktop {
   application {
-    mainClass = "icl.ohs.refernce.MainKt"
+    mainClass = "icl.ohs.reference.MainKt"
 
     nativeDistributions {
       targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb, TargetFormat.Rpm)
-      packageName = "icl.ohs.refernce"
+      packageName = "icl.ohs.reference"
       packageVersion = composePackageVersion
     }
   }

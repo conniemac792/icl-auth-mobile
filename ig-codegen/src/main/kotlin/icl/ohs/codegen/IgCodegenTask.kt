@@ -57,7 +57,7 @@ abstract class IgCodegenTask : DefaultTask() {
   @get:PathSensitive(PathSensitivity.RELATIVE)
   abstract val sourcesDir: DirectoryProperty
 
-  /** Root Kotlin package for all emitted files (e.g. `dev.ohs.player.generated`). */
+  /** Root Kotlin package for all emitted files (e.g. `icl.ohs.mobile.generated`). */
   @get:Input abstract val packageName: Property<String>
 
   /** Directory into which generated `.kt` files are written. */

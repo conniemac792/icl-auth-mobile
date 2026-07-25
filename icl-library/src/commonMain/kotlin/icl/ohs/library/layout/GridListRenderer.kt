@@ -33,7 +33,7 @@ import icl.ohs.library.renderer.RenderOptions
  * Renders items in a vertically-scrolling `LazyVerticalGrid`.
  *
  * View-type constants are typically declared once in an `object`; see
- * [dev.ohs.player.library.registry.ViewType].
+ * [icl.ohs.mobile.library.registry.ViewType].
  *
  * ```
  * object AppViewTypes {
@@ -62,7 +62,7 @@ class GridListRenderer<T>(
   companion object {
     /**
      * ViewType constant for registering a [GridListRenderer] in the
-     * [dev.ohs.player.library.registry.ViewRegistry].
+     * [icl.ohs.mobile.library.registry.ViewRegistry].
      */
     val VIEW_TYPE = ViewType("Grid")
   }

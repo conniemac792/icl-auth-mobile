@@ -26,7 +26,7 @@ import org.gradle.api.provider.Property
  * ```kotlin
  * igCodegen {
  *     // sourcesDir defaults to src/commonMain/composeResources/files
- *     packageName = "dev.ohs.player.generated"
+ *     packageName = "icl.ohs.mobile.generated"
  * }
  * ```
  */
@@ -39,7 +39,7 @@ abstract class IgCodegenExtension @Inject constructor(objects: ObjectFactory) {
    */
   val sourcesDir: DirectoryProperty = objects.directoryProperty()
 
-  /** Root Kotlin package for all generated sources. Defaults to `dev.ohs.player.generated`. */
+  /** Root Kotlin package for all generated sources. Defaults to `icl.ohs.mobile.generated`. */
   val packageName: Property<String> =
-    objects.property(String::class.java).apply { convention("dev.ohs.player.generated") }
+    objects.property(String::class.java).apply { convention("icl.ohs.mobile.generated") }
 }

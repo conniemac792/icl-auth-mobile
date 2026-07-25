@@ -28,7 +28,7 @@ plugins {
 kotlin {
   // TODO(AGP-9.0): rename `androidLibrary { }` to `android { }` once AGP is upgraded.
   androidLibrary {
-    namespace = "dev.ohs.player.library"
+    namespace = "icl.ohs.mobile.library"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     minSdk = libs.versions.android.minSdk.get().toInt()
 

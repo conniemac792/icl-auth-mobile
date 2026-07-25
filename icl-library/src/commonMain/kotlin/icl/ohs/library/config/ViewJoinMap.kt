@@ -22,7 +22,7 @@ import kotlinx.serialization.Serializable
  * sourced from a different scope of a `SearchResult`, into one flat state row per pivot resource.
  *
  * Downloaded and interpreted at runtime by
- * [dev.ohs.player.library.extractor.GenericStateExtractor].
+ * [icl.ohs.mobile.library.extractor.GenericStateExtractor].
  */
 @Serializable
 data class ViewJoinMap(

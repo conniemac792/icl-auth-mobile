@@ -21,9 +21,9 @@ import androidx.compose.ui.Modifier
 /**
  * Arranges a `List<T>` and delegates per-item rendering to a [ConfiguredRenderer].
  *
- * The library ships three implementations — [dev.ohs.player.library.layout.VerticalListRenderer],
- * [dev.ohs.player.library.layout.HorizontalListRenderer], and
- * [dev.ohs.player.library.layout.GridListRenderer] — but apps can supply their own.
+ * The library ships three implementations — [icl.ohs.mobile.library.layout.VerticalListRenderer],
+ * [icl.ohs.mobile.library.layout.HorizontalListRenderer], and
+ * [icl.ohs.mobile.library.layout.GridListRenderer] — but apps can supply their own.
  *
  * ```
  * class StaggeredRenderer<T> : LayoutRenderer<T> {

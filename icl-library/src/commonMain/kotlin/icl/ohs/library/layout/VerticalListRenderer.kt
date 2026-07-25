@@ -30,10 +30,10 @@ import icl.ohs.library.renderer.RenderOptions
 
 /**
  * Renders items vertically as a `LazyColumn`. The default layout for
- * [dev.ohs.player.library.scaffold.ListScaffold] when none is specified.
+ * [icl.ohs.mobile.library.scaffold.ListScaffold] when none is specified.
  *
  * View-type constants are typically declared once in an `object`; see
- * [dev.ohs.player.library.registry.ViewType].
+ * [icl.ohs.mobile.library.registry.ViewType].
  *
  * ```
  * object AppViewTypes {
@@ -59,7 +59,7 @@ class VerticalListRenderer<T>(
   companion object {
     /**
      * ViewType constant for registering a [VerticalListRenderer] in the
-     * [dev.ohs.player.library.registry.ViewRegistry].
+     * [icl.ohs.mobile.library.registry.ViewRegistry].
      */
     val VIEW_TYPE = ViewType("VerticalList")
   }
