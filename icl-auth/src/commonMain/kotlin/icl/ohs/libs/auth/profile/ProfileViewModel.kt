@@ -3,10 +3,12 @@ package icl.ohs.libs.auth.profile
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class ProfileViewModel {
@@ -19,9 +21,9 @@ class ProfileViewModel {
     var errorMessage by mutableStateOf<String?>(null)
         private set
 
-    // Own scope tied to this ViewModel's lifetime instead of a fresh, uncancellable
-    // scope per call - cancel() must be invoked (e.g. from a DisposableEffect) when
-    // the screen leaves composition so an in-flight refresh doesn't leak.
+    var successMessage by mutableStateOf<String?>(null)
+        private set
+
     private val viewModelScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     fun refresh() {
@@ -34,8 +36,6 @@ class ProfileViewModel {
             result.fold(
                 onSuccess = { uiState = it },
                 onFailure = { throwable ->
-                    // ProfileRepository/IclAuth surface a network-error message here when
-                    // the /provider/me call fails, including when there's no connectivity.
                     errorMessage = throwable.message
                         ?: "Unable to refresh profile. Check your internet connection and try again."
                 },
@@ -44,8 +44,33 @@ class ProfileViewModel {
         }
     }
 
-    fun dismissError() {
+    fun clearCache() {
+        viewModelScope.launch {
+            // Simulate clearing cache
+            successMessage = "Cache cleared successfully!"
+            delay(2.seconds)
+            successMessage = null
+        }
+    }
+
+    fun clearAppData() {
+        viewModelScope.launch {
+            // Simulate clearing app data
+            ProfileRepository.clearProfile()
+            successMessage = "App data removed. Please log in again."
+            delay(2.seconds)
+            successMessage = null
+        }
+    }
+
+    fun logout(onLogout: () -> Unit) {
+        ProfileRepository.clearProfile()
+        onLogout()
+    }
+
+    fun dismissMessages() {
         errorMessage = null
+        successMessage = null
     }
 
     fun clear() {

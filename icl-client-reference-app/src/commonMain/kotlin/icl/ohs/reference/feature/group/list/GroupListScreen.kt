@@ -18,9 +18,10 @@ package icl.ohs.reference.feature.group.list
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.DropdownMenu
@@ -49,14 +50,15 @@ import icl.ohs.mobile.generated.viewtype.ViewTypeCS
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GroupListScreen(
-  onGroupClick: (String) -> Unit,
-  onProfileClick: () -> Unit,
-  onSettingsClick: () -> Unit,
-  onLogoutClick: () -> Unit,
+    onGroupClick: (String) -> Unit,
+    onProfile1Click: () -> Unit,
+    onProfile2Click: () -> Unit,
+    onSettingsClick: () -> Unit,
+    onLogoutClick: () -> Unit,
 ) {
   val viewModel: GroupListViewModel = viewModel { GroupListViewModel() }
   val groups by viewModel.groups.collectAsStateWithLifecycle()
-  var menuExpanded by remember { mutableStateOf(false) }
+  var menuExpanded by remember { mutableStateOf(value = false) }
   if (groups == null) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
       CircularProgressIndicator()
@@ -84,33 +86,52 @@ fun GroupListScreen(
             Icon(Icons.Default.MoreVert, contentDescription = "More options")
           }
 
-          DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
+          DropdownMenu(
+            expanded = menuExpanded,
+            onDismissRequest = { menuExpanded = false }
+          ) {
             DropdownMenuItem(
-              text = { Text("Profile") },
-              leadingIcon = { Icon(Icons.Default.AccountCircle, contentDescription = null) },
+              text = { Text("Profile 1") },
+              leadingIcon = {
+                Icon(Icons.Default.AccountCircle, contentDescription = null)
+              },
               onClick = {
                 menuExpanded = false
-                onProfileClick()
+                onProfile1Click()
+              }
+            )
+            DropdownMenuItem(
+              text = { Text("Profile 2") },
+              leadingIcon = {
+                Icon(Icons.Default.Person, contentDescription = null)
               },
+              onClick = {
+                menuExpanded = false
+                onProfile2Click()
+              }
             )
             DropdownMenuItem(
               text = { Text("Settings") },
-              leadingIcon = { Icon(Icons.Default.Settings, contentDescription = null) },
+              leadingIcon = {
+                Icon(Icons.Default.Settings, contentDescription = null)
+              },
               onClick = {
                 menuExpanded = false
                 onSettingsClick()
-              },
+              }
             )
             DropdownMenuItem(
               text = { Text("Logout") },
-              leadingIcon = { Icon(Icons.Default.ExitToApp, contentDescription = null) },
+              leadingIcon = {
+                Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = null)
+              },
               onClick = {
                 menuExpanded = false
                 onLogoutClick()
-              },
+              }
             )
           }
-        },
+        }
       )
     }
     emptyState { Text("No households") }
